@@ -1,0 +1,23 @@
+$background-color: #152238;
+$text-color: white;
+
+.header {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: $background-color;
+    border: 2px solid $text-color;
+    box-sizing: border-box;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+
+        > div {
+            font-family: cursive;
+            font-size: 40px;
+            color: $text-color;
+        }
+    }
+}
