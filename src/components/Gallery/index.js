@@ -10,7 +10,7 @@ class Gallery extends Component {
         this.state = {
             listOfImages: [],
             currentPage: 0,
-            currentImage: ''
+            currentImageIndex: 0
         }
 
         this.debounceTimer = null;
@@ -29,12 +29,29 @@ class Gallery extends Component {
         });
     }
 
-    openModal = (url) => {
+    openModal = (index) => {
         this.setState({
-            currentImage: url
+            currentImageIndex: index
         }, () => {
             document.getElementById('imageModal').style.display = 'block';
         })
+    }
+
+    toggleImage = (direction) => {
+
+        if(direction === 'left') {
+            this.setState((prevState) => {
+                return {currentImageIndex: prevState.currentImageIndex - 1}
+            });
+        } else {
+            this.setState((prevState) => {
+                return {currentImageIndex: prevState.currentImageIndex + 1}
+            }, () => {
+                if(this.state.listOfImages.length - this.state.currentImageIndex < 5) {
+                    this.getImages();
+                }
+            });
+        }
     }
 
     getImages = () => {
@@ -69,16 +86,16 @@ class Gallery extends Component {
 
     render() {
 
-        const { listOfImages, currentImage } = this.state;
+        const { listOfImages, currentImageIndex } = this.state;
 
         return (
             <>
                 <div className="gallery">
-                    {listOfImages.map( image => {
-                        return <img key={image.id} src={image.urls.small} alt={image.description} onClick={() => this.openModal(image.urls.small)}></img>
+                    {listOfImages.map( (image, index) => {
+                        return <img key={image.id} src={image.urls.small} alt={image.description} onClick={() => this.openModal(index)}></img>
                     })}
                 </div>
-                <Modal url={currentImage} />
+                <Modal listOfImages={listOfImages} imageIndex={currentImageIndex} toggleImage={this.toggleImage}/>
             </>
         )
     }

@@ -9,7 +9,7 @@
 
     &__content {
         position: relative;
-        top: 10%;
+        top: 7%;
         margin: auto;
         width: 60%;
         @media screen and (max-width: 762px) {
@@ -41,6 +41,17 @@
                 @media screen and (max-width: 762px) {
                     max-width: 100%;
                 }
+            }
+        }
+
+        &__footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            > div {
+                font-size: 30px;
+                padding: 0 30px 20px;
             }
         }
     }
