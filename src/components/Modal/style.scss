@@ -1,0 +1,47 @@
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(156, 148, 148, 0.5);
+
+    &__content {
+        position: relative;
+        top: 10%;
+        margin: auto;
+        width: 60%;
+        @media screen and (max-width: 762px) {
+            width: 95%;
+        }
+        background-color: white;
+        border-radius: 10px;
+
+        &__header {
+            text-align: right;
+
+            > button {
+                position: relative;
+                right: 10px;
+                top: 10px;
+                background-color: transparent;
+                border: none;
+                font-size: 30px;
+                cursor: pointer;
+                outline: none;
+            }
+        }
+
+        &__body {
+            padding: 10px;
+            text-align: center;
+
+            > img {
+                @media screen and (max-width: 762px) {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}

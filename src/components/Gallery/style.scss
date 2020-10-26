@@ -1,14 +1,16 @@
+$background-color: #152238;
 
 .gallery {
     display: flex;
     flex-flow: row wrap;
     width: 100%;
+    background-color: $background-color;
 
     > img {
         flex: auto;
         height: 400px;
         min-width: 150px;
-        max-width: 50%;
+        max-width: 33%;
         padding: 2px;
         @media screen and (max-width: 762px) {
             max-width: 100%;

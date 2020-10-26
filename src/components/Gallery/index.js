@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import './style.scss';
+import Modal from '../Modal';
 
 class Gallery extends Component {
 
@@ -8,7 +9,8 @@ class Gallery extends Component {
         super(props);
         this.state = {
             listOfImages: [],
-            currentPage: 0
+            currentPage: 0,
+            currentImage: ''
         }
 
         this.debounceTimer = null;
@@ -25,6 +27,14 @@ class Gallery extends Component {
                 this.getImages();
             }
         });
+    }
+
+    openModal = (url) => {
+        this.setState({
+            currentImage: url
+        }, () => {
+            document.getElementById('imageModal').style.display = 'block';
+        })
     }
 
     getImages = () => {
@@ -59,14 +69,17 @@ class Gallery extends Component {
 
     render() {
 
-        const { listOfImages } = this.state;
+        const { listOfImages, currentImage } = this.state;
 
         return (
-            <div className="gallery">
-                {listOfImages.map( image => {
-                    return <img key={image.id} src={image.urls.small} alt={image.description}></img>
-                })}
-            </div>
+            <>
+                <div className="gallery">
+                    {listOfImages.map( image => {
+                        return <img key={image.id} src={image.urls.small} alt={image.description} onClick={() => this.openModal(image.urls.small)}></img>
+                    })}
+                </div>
+                <Modal url={currentImage} />
+            </>
         )
     }
 }
