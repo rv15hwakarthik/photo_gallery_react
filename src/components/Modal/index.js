@@ -28,7 +28,7 @@ function Modal({listOfImages , imageIndex, toggleImage}) {
                     : ''}
                 </div>
                 <div className="modal__content__footer">
-                    <div role="button" onClick={() => toggleImage('left')}>&#8249;</div>
+                    <div role="button" onClick={() => toggleImage('left')} style={imageIndex === 0 ? { visibility: 'hidden'} : {}}>&#8249;</div>
                     <div role="button" onClick={() => toggleImage('right')}>&#8250;</div>
                 </div>
             </div>
