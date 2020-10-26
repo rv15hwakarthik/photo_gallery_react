@@ -8,6 +8,12 @@ function closeModal() {
     }
 }
 
+window.addEventListener("keydown", event => {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
+
 function Modal({listOfImages , imageIndex, toggleImage}) {
 
     return (
