@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './style.scss';
 import cameraIcon from '../../assets/svgs/camera.svg';
 
-class Header extends Component {
+function Header(){
 
-    render() {
         return (
             <div className="header">
                 <div className="header__container">
@@ -13,7 +12,6 @@ class Header extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 export default Header;
